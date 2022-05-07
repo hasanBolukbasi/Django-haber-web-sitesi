@@ -3,5 +3,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    text = "Haber Sitesi"
-    return HttpResponse("Anasayfa %s." % text)
+    return HttpResponse("News Sayfası")
