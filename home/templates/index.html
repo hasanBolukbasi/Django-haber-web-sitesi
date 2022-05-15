@@ -1,0 +1,29 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block topbar %}
+    {% include "topbar.html" %}
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block topnewsslider %}
+    {% include "topnewsslider.html" %}
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block backtotop %}
+    {% include "backtotop.html" %}
+{% endblock %}
