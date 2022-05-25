@@ -29,12 +29,13 @@
 <body>
     {% include 'topbar.html' %}
     {% include 'navbar.html' %}
-    {% include 'topnewsslider.html' %}
-    {% block mainnewsslider %} {% include 'mainnewsslider.html' %} {% endblock %}
-    {% block featurednewsslider %} {% include 'featurednewsslider.html' %}{% endblock %}
-    {% block categorynewsslider1%} {% include 'categorynewsslider1.html' %} {% endblock %}
-    {% block categorynewsslider2%} {% include 'categorynewsslider2.html' %}{% endblock %}
-    {% block newswithslidebar %} {% include 'newswithslidebar.html' %}{% endblock %}
+    {% block topnewsslider %}  {% endblock %}
+    {% block mainnewsslider %}  {% endblock %}
+    {% block featurednewsslider %} {% endblock %}
+    {% block categorynewsslider1%} {% endblock %}
+    {% block categorynewsslider2%} {% endblock %}
+    {% block newswithslidebar %} {% endblock %}
+    {% block content %} {%  endblock %}
     {% include 'footer.html' %}
     {% include 'backtotop.html' %}
 </body>

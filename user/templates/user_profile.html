@@ -1,0 +1,74 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <nav class="breadcrumb bg-transparent m-0 p-0">
+                <a class="breadcrumb-item" href="/">Anasayfa</a>
+                <span class="breadcrumb-item active">Profil</span>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="bg-light mb-3" style="padding: 30px;">
+                        {% include "user_panel.html" %}
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="contact-form bg-light mb-3" style="padding: 30px;">
+                        <h5 class="aside-title">Kullanıcı Bilgileri</h5>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <td><img src="{{ profile.image.url }}"</td>
+                            </tr>
+                            <tr>
+                                <th>Adı Soyadı :</th>
+                                <td>{{ profile.user_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td>{{ profile.user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefon :</th>
+                                <td>{{ profile.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Adres: </th>
+                                <td>{{ profile.address }}</td>
+                            </tr>
+                            <tr>
+                                <th>Şehir :</th>
+                                <td>{{ profile.city }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ülke :</th>
+                                <td>{{ profile.country }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% endblock %}

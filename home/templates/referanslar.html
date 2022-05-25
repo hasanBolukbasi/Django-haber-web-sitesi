@@ -1,0 +1,23 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <nav class="breadcrumb bg-transparent m-0 p-0">
+                <a class="breadcrumb-item" href="/">Anasayfa</a>
+                <span class="breadcrumb-item active">Referanslar</span>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+    {{ setting.references| safe}}
+{% endblock %}

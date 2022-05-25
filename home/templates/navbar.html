@@ -10,21 +10,43 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="category.html" class="nav-item nav-link">Categories</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
+                    <a href="/" class="nav-item nav-link">Anasayfa</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Haberler</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+                            <a href="/news" class="dropdown-item">Politika</a>
+                            <a href="/news" class="dropdown-item">İş hayatı</a>
+                            <a href="/news" class="dropdown-item">Spor</a>
+                            <a href="/news" class="dropdown-item">Sağlık</a>
+                            <a href="/news" class="dropdown-item">Eğitim</a>
+                            <a href="/news" class="dropdown-item">Bilim</a>
+                            <a href="/news" class="dropdown-item">Teknoloji</a>
+                            <a href="/news" class="dropdown-item">Yemek</a>
+                            <a href="/news" class="dropdown-item">Eğlence</a>
+                            <a href="/news" class="dropdown-item">Seyahat</a>
+                            <a href="/news" class="dropdown-item">Yaşam</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="/hakkimizda" class="nav-item nav-link">Hakkımızda</a>
+                    <a href="/referanslar" class="nav-item nav-link">Referanslar</a>
+                    <a href="/iletisim" class="nav-item nav-link">İletişim</a>
                 </div>
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control" placeholder="Keyword">
+
+                    {% if user.id is not None %}
+                        <!--<img src="{{ profile.image.url }}">-->
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ user.first_name }}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="/user" class="dropdown-item">Profil</a>
+                            <a href="#" class="dropdown-item">Mesajlar</a>
+                            <a href="/logout" class="dropdown-item">Çıkış</a>
+                        </div>
+
+                    {% else %}
+                        <a href="/login" class="nav-item nav-link">Giriş</a>
+                        <a href="/signup" class="nav-item nav-link">Kaydol</a>
+                    {% endif %}
+                    <input type="text" class="form-control" placeholder="Arama">
                     <div class="input-group-append">
                         <button class="input-group-text text-secondary"><i
                                 class="fa fa-search"></i></button>

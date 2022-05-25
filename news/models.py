@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.utils.safestring import mark_safe
 
@@ -29,7 +30,7 @@ class Comment(models.Model):
     commment = models.TextField()
     rate = models.IntegerField()
     news = models.ForeignKey('News', on_delete=models.CASCADE)
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    #user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     ip = models.GenericIPAddressField()
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
@@ -53,10 +54,10 @@ class News(models.Model):
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    detail = models.TextField()
+    detail = RichTextUploadingField()
     type = models.CharField(max_length=20, choices=TUR)
     slug = models.SlugField()
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    #user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -67,42 +68,6 @@ class News(models.Model):
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = 'Image'
-
-
-class User(models.Model):
-    STATUS = (
-        ('True', 'Evet'),
-        ('False', 'Hayır'),
-    )
-    USER_ROLE = (
-        ('Kullanıcı', 'Kullanıcı'),
-        ('Muhabir', 'Muhabir'),
-        ('Yazar', 'Yazar'),
-    )
-    name = models.CharField(max_length=20)
-    surname = models.CharField(max_length=30)
-    email = models.EmailField()
-    password = models.CharField(max_length=30)
-    role = models.CharField(max_length=10, choices=USER_ROLE)
-    # models.CharField(max_length=30)
-    status = models.CharField(max_length=10, choices=STATUS)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Profile(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, upload_to='images/')
-    address = models.TextField(max_length=255)
-    phone = models.CharField(max_length=10)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.phone
 
 
 class Images(models.Model):
@@ -139,10 +104,13 @@ class Message(models.Model):
     phone = models.CharField(max_length=10)
     subject = models.CharField(max_length=50)
     message = models.TextField()
-    Ip = models.GenericIPAddressField()
+    ip = models.GenericIPAddressField()
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+
+

@@ -8,22 +8,26 @@
     <link rel='shortcut icon' type='image' href='{{ setting.icon.url }}' />
 {% endblock %}
 
-{% block topbar %}
-    {% include "topbar.html" %}
-{% endblock %}
-
-{% block navbar %}
-    {% include "navbar.html" %}
-{% endblock %}
-
 {% block topnewsslider %}
-    {% include "topnewsslider.html" %}
+   {% include 'topnewsslider.html' %}
 {% endblock %}
 
-{% block footer %}
-    {% include "footer.html" %}
+{% block mainnewsslider %}
+   {% include 'mainnewsslider.html' %}
 {% endblock %}
 
-{% block backtotop %}
-    {% include "backtotop.html" %}
+{% block featurednewsslider %}
+   {% include 'featurednewsslider.html' %}
+{% endblock %}
+
+{% block categorynewsslider1 %}
+   {% include 'categorynewsslider1.html' %}
+{% endblock %}
+
+{% block categorynewsslider2 %}
+   {% include 'categorynewsslider2.html' %}
+{% endblock %}
+
+{% block newswithslidebar %}
+   {% include 'newswithslidebar.html' %}
 {% endblock %}

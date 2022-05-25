@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from news.models import Category, Comment, News, User, Profile, Images, Faq, Message
+
+from news.models import Category, Comment, News, Images, Faq, Message
+
+
+class NewsImageInline(admin.TabularInline):
+    model = Images
+    extra = 5
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -17,16 +23,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = ['title', 'status', 'image_tag']
     list_filter = ['status']
     readonly_fields = ('image_tag',)
-
-
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['name', 'status']
-    list_filter = ['status']
-
-
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['phone']
-    list_filter = ['phone']
+    inlines = [NewsImageInline]
 
 
 class ImagesAdmin(admin.ModelAdmin):
@@ -47,8 +44,6 @@ class MessageAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(News, NewsAdmin)
-admin.site.register(User, UserAdmin)
-admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Images, ImagesAdmin)
 admin.site.register(Faq, FaqAdmin)
 admin.site.register(Message, MessageAdmin)
