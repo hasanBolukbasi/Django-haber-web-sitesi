@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from home.forms import SignUpForm
 from home.models import Settings, ContactFormMessage, ContactFormu
-from news.models import News, Category
+from news.models import News, Category, Faq
 
 
 def hakkimizda(request):
@@ -85,3 +85,10 @@ def signup_view(request):
                'form': form}
     return render(request, 'signup.html', context)
 
+
+def faq_view(request):
+    faq = Faq.objects.all()
+    context = {
+        'faq': faq,
+    }
+    return render(request, 'faq.html', context)
